@@ -10,7 +10,7 @@ const nodeRedModule = require("node-red-module-parser");
 
 const port = process.env.PORT || 8080;
 const host = process.env.HOST || "localhost";
-const registry = process.env.REGISTRY || "http://localhost:4873";
+const registry = process.env.REGISTRY || "http://127.0.0.1:4873";
 const keyword = process.env.KEYWORD || "node-red";
 const name = process.env.CATALOGUE_NAME || "verdaccio";
 

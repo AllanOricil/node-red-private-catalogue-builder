@@ -33,16 +33,20 @@ notify:
 
 ## Build
 
-Build and push the container to the private container repository.
+Before building this docker image, login to this AWS (845044614340) and then publish this [repo](https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/node-red-module-parser/browse?region=us-east-2) to a local verdaccio instance.
 
 ```bash
 docker build . -t catalogue --no-cache
-docker tag catalogue private.example.com/catalogue
-docker push private.example.com/catalogue
+```
+
+If you don't want to publish the package to verdaccio, clone the [repo](https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/node-red-module-parser/browse?region=us-east-2), and run `npm link node-red-module-parser` in the root of it. Then run the following command to build the image
+
+```bash
+docker build . -t catalogue --build-arg REGISTRY=https://registry.npmjs.org/ --no-cache
 ```
 
 ## Run
 
 ```bash
-docker run -dit --network=host -e NAME="MY CATALOG" -e REGISTRY="http://localhost:4837" catalogue
+docker run -dit --network=host -e NAME="MY CATALOG" -e REGISTRY="http://localhost:4873" catalogue
 ```

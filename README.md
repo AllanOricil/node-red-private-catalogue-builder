@@ -44,5 +44,5 @@ docker push private.example.com/catalogue
 ## Run
 
 ```bash
-docker run -dit --network=host -e NAME="MY CATALOG" catalogue
+docker run -dit --network=host -e NAME="MY CATALOG" -e REGISTRY="http://localhost:4837" catalogue
 ```

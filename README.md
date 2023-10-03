@@ -34,8 +34,13 @@ notify:
 docker build . -t catalogue --build-arg REGISTRY=https://localhost:4873 --no-cache
 ```
 
+`REGISTRY` is the registry used to fetch the dependencies of this project during builds. It defaults to https://registry.npmjs.org/.
+You can use this to get build dependencies from your own private registry.
+
 ## Run
 
 ```bash
 docker run -dit --network=host -e NAME="MY CATALOG" -e REGISTRY="http://localhost:4873" catalogue
 ```
+
+`REGISTRY` is the registry used to create the catalogue.json

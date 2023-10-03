@@ -6,7 +6,7 @@ const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const superagent = require("superagent");
-const nodeRedModule = require("node-red-module-parser");
+const nodeRedModule = require("@allanoricil/node-red-module-parser");
 
 const port = process.env.PORT || 8080;
 const host = process.env.HOST || "localhost";
@@ -47,7 +47,7 @@ function update() {
               fs.mkdirSync(tarDir, { recursive: true });
               let tarPath = path.join(
                 tarDir,
-                nodeNames[node].split("/").slice(-1) + ".tgz"
+                nodeNames[node].split("/").slice(-1) + ".tgz",
               );
               let tarRes = await superagent.get(tar).responseType("blob");
               fs.writeFileSync(tarPath, tarRes.body);

@@ -3,9 +3,6 @@
 A minimal web app to host a `catalogue.json` file for a private repository of
 Node-RED nodes.
 
-Intended to be run in it's own container as part of either
-[multi-tenant-node-red]() or [multi-tenant-node-red-k8s]()
-
 ## Configure
 
 Environment variables:
@@ -33,16 +30,8 @@ notify:
 
 ## Build
 
-Before building this docker image, login to this AWS (845044614340) and then publish this [repo](https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/node-red-module-parser/browse?region=us-east-2) to a local verdaccio instance.
-
 ```bash
-docker build . -t catalogue --no-cache
-```
-
-If you don't want to publish the package to verdaccio, clone the [repo](https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/node-red-module-parser/browse?region=us-east-2), and run `npm link node-red-module-parser` in the root of it. Then run the following command to build the image
-
-```bash
-docker build . -t catalogue --build-arg REGISTRY=https://registry.npmjs.org/ --no-cache
+docker build . -t catalogue --build-arg REGISTRY=https://localhost:4873 --no-cache
 ```
 
 ## Run

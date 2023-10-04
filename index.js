@@ -88,6 +88,10 @@ app.use(morgan("combined"));
 app.use(helmet());
 app.use(bodyParser.json());
 
+app.get("/health", (req, res, next) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.post("/update", (req, res, next) => {
   const updateRequest = req.body;
   console.log(JSON.stringify(updateRequest, null, 2));

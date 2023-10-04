@@ -9,8 +9,8 @@ const superagent = require("superagent");
 const nodeRedModule = require("@allanoricil/node-red-module-parser");
 
 const port = process.env.PORT || 8080;
-const host = process.env.HOST || "localhost";
-const registry = process.env.REGISTRY || "http://127.0.0.1:4873";
+const host = process.env.HOST || "0.0.0.0";
+const registry = process.env.REGISTRY || "http://localhost:4873";
 const keyword = process.env.KEYWORD || "node-red";
 const name = process.env.CATALOGUE_NAME || "verdaccio";
 
@@ -103,5 +103,5 @@ app.get("/catalogue.json", cors(), (req, res, next) => {
 update();
 
 app.listen(port, host, function () {
-  console.log("App listening on  %s:%d", host, port);
+  console.log("Server running on  %s:%d", host, port);
 });

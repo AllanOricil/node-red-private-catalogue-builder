@@ -9,7 +9,7 @@ Environment variables:
 
 - NAME - catalogue name (defaults to `verdaccio`)
 - PORT - which port to listen on (defaults to `8080`)
-- HOST - which local IP Address to bind to (defaults to `localhost`)
+- HOST - which local IP Address to bind to (defaults to `0.0.0.0`)
 - REGISTRY - a host and optional port number to connect to the NPM registry (defaults to `http://localhost:4873`)
 - KEYWORD - the npm keyword to filter on (defaults to `node-red`)
 
@@ -31,12 +31,8 @@ notify:
 ## Build
 
 ```bash
-docker build . -t catalogue --build-arg REGISTRY=https://localhost:4873 --no-cache
+docker build . -t catalogue --no-cache
 ```
-
-`REGISTRY` is the registry used to fetch the dependencies of this project during builds. It defaults to https://registry.npmjs.org/.
-You can use this to get build dependencies from your own private registry.
-
 ## Run
 
 ```bash

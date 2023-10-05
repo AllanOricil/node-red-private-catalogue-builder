@@ -21,15 +21,15 @@ POST  /update         rebuilds the catalogue
 GET   /catalogue.json returns the current catalogue
 ````
 
-The `/update` endpoint is intended to be used with the verdaccio private registry configured to send notifications when packages are uploaded/updated. e.g.
+The `GET /update` route is called by [Verdaccio every time it changes something](https://verdaccio.org/docs/configuration#notifications):
 
-```
+````yaml
 notify:
   method: POST
   headers: [{'Content-Type': 'application/json'}]
   endpoint: http://catalogue/update
   content: '{"name": "{{name}}", "versions": "{{versions}}", "dist-tags": "{{dist-tags}}"}'
-```
+````
 
 ## Build
 

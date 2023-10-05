@@ -13,10 +13,13 @@ Environment variables:
 - REGISTRY - a host and optional port number to connect to the NPM registry (defaults to `http://localhost:4873`)
 - KEYWORD - the npm keyword to filter on (defaults to `node-red`)
 
-It presents 2 HTTP endpoints
+It exposes 3 endpoints:
 
-- /update - a POST to this endpoint will trigger a rebuild of the catalogue
-- /catalogue.json - a GET request returns the current catalogue
+````bash
+GET   /health         used to check the status of the service
+POST  /update         rebuilds the catalogue
+GET   /catalogue.json returns the current catalogue
+````
 
 The `/update` endpoint is intended to be used with the verdaccio private registry configured to send notifications when packages are uploaded/updated. e.g.
 
@@ -39,4 +42,3 @@ docker build . -t catalogue --no-cache
 docker run -dit --network=host -e NAME="MY CATALOG" -e REGISTRY="http://localhost:4873" catalogue
 ```
 
-`REGISTRY` is the registry used to create the catalogue.json
